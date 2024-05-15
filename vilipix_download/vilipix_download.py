@@ -9,7 +9,7 @@ import requests
 if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read("config.ini", encoding="utf-8")
-    configData = dict(config.items("common"))
+    configData = dict(config.items("vilipix"))
     output = configData["output"]
     keyword = configData["keyword"]
     skip_page = int(configData["skip_page"])
