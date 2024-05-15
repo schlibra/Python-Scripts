@@ -53,8 +53,5 @@ if __name__ == '__main__':
                 print(f"wrote to %s/%s/%s_%s.txt" % (output, book_name, article_number, section_name))
             else:
                 print("skipped %s" % section_name)
-            # with open("temp.html", "wb") as f:
-            #     f.write(article_res.content)
-            # print(article_text)
             section_index += 1
         print("end %s" % book_name)
