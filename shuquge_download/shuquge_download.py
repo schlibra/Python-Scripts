@@ -47,9 +47,12 @@ if __name__ == '__main__':
                 print(f"start %s" % section_name)
                 for paragraph in article_text:
                     paragraph = paragraph.replace("<script>document.writeln(qsbs.bb('", "").replace("'));", "")
-                    paragraph = str(base64.b64decode(paragraph), "utf-8").replace("<p>", "").replace("</p>", "")
-                    with open(f"%s/%s/%s_%s.txt" % (output, book_name, article_number, section_name), "a") as f:
-                        f.write(paragraph)
+                    try:
+                        paragraph = str(base64.b64decode(paragraph), "utf-8")
+                        with open(f"%s/%s/%s_%s.txt" % (output, book_name, article_number, section_name), "a") as f:
+                            f.write(paragraph.replace("<p>", "").replace("</p>", "")+"\n")
+                    except:
+                        pass
                 print(f"wrote to %s/%s/%s_%s.txt" % (output, book_name, article_number, section_name))
             else:
                 print("skipped %s" % section_name)
